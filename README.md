@@ -34,6 +34,8 @@ This project was created to solve the challenge of running rclone as a silent ba
 
 * **⚙️ Built for Windows:** Designed from the ground up to integrate seamlessly with Windows environments and the Task Scheduler for robust, set-and-forget operation.
 
+*  **🔰 Beginner Friendly:** Designed for ease of use. The setup script handles all complex installation, so you only need to edit a simple config file to get started.
+
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your Windows machine:
