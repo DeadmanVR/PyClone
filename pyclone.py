@@ -8,13 +8,13 @@ import notify as nt
 import utils as ut
 
 # --- SCRIPT SETUP ---
-script_dir = os.path.dirname(os.path.realpath(__file__)) # This is C:\rclone\scripts
-rclone_dir = os.path.dirname(script_dir) # This is C:\rclone
+pyclone_dir = os.path.dirname(os.path.realpath(__file__)) # This is C:\rclone\pyclone
+rclone_dir = os.path.dirname(pyclone_dir) # This is C:\rclone
 
-config_path = os.path.join(script_dir, 'config.json') # Path of config.json file located inside the scripts directory
+config_path = os.path.join(pyclone_dir, 'config.json') # Path of config.json file located inside the pyclone directory
 rclone_exe = os.path.join(rclone_dir, 'rclone.exe') # Correctly finds C:\rclone\rclone.exe
-log_file = os.path.join(script_dir, 'rclone_log.txt') # Path of rclone_log.txt file located inside the scripts directory
-message_id_file = os.path.join(script_dir, 'last_message_id.txt') # Path of last_message_id.txt file located inside the scripts directory
+log_file = os.path.join(pyclone_dir, 'rclone_log.txt') # Path of rclone_log.txt file located inside the pyclone directory
+message_id_file = os.path.join(pyclone_dir, 'last_message_id.txt') # Path of last_message_id.txt file located inside the pyclone directory
 
 # --- MAIN SCRIPT LOGIC ---
 def main():
