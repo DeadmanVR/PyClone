@@ -70,7 +70,7 @@ echo      'requests' installed successfully.
 echo.
 
 :: --- Step 5: Create the Launcher Batch File ---
-echo [5/5] Creating the launcher script (run_backup.bat)...
+echo [5/5] Creating the launcher script (run_pyclone.bat)...
 (
     echo @"%DEST_DIR%\venv\Scripts\python.exe" "%DEST_DIR%\pyclone.py"
 ) > "%DEST_DIR%\run_pyclone.bat"
