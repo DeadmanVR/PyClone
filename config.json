@@ -1,0 +1,37 @@
+{
+    "Documents": {
+        "destination": "onedrive:Documents",
+        "excludes": [
+            "PowerToys/**",
+            "PowerShell/**",
+            "OpenIV/**",
+            "Rockstar Games/**"
+        ]
+    },
+    "Pictures": {
+        "destination": "onedrive:Pictures",
+        "excludes": []
+    },
+    "Videos": {
+        "destination": "onedrive:Videos",
+        "excludes": []
+    },
+    "Music": {
+        "destination": "onedrive:Music",
+        "excludes": []
+    },
+    "Downloads": {
+        "destination": "onedrive:Downloads",
+        "excludes": [
+            "Torrent Downloads/**"
+        ]
+    },
+    "V-Drive": {
+        "source": "V:",
+        "destination": "gdrive:Dev",
+        "excludes": [
+            "System Volume Information/**",
+            "$RECYCLE.BIN/**"
+        ]
+    }
+}
