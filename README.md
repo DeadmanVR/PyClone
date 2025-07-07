@@ -34,8 +34,6 @@ This project was created to solve the challenge of running rclone as a silent ba
 
 * **⚙️ Built for Windows:** Designed from the ground up to integrate seamlessly with Windows environments and the Task Scheduler for robust, set-and-forget operation.
 
-*  **🔰 Beginner Friendly:** Designed for ease of use. The setup script handles all complex installation, so you only need to edit a simple config file to get started.
-
 ## Prerequisites
 
 Before you begin, ensure you have the following installed on your Windows machine:
@@ -53,11 +51,11 @@ Installation is handled by a single script.
 2. **Run the Setup Script:** Right-click the `setup.bat` file and then select `Run as administrator`.
 
 3. **The setup script will automatically:**
-   - Create the necessary folder structure (`C:\rclone\` & `C:\rclone\scripts`).
+   - Create the necessary folder structure (`C:\rclone\` & `C:\rclone\pyclone`).
    - Move the project files to the correct location.
    - Create a Python virtual environment.
    - Install the required `requests` library.
-   - Create the `run_backup.bat` launcher script.
+   - Create the `run_pyclone.bat` launcher script.
 
 4. **Place `rclone.exe`:** Place the `rclone.exe` file you downloaded earlier into the main `C:\rclone` folder.
 
@@ -73,12 +71,12 @@ After running the setup script, you need to configure three things: `rclone` its
 2. **Configure Telegram Notifications**
     1. Create a Telegram Bot by talking to [@BotFather](https://t.me/BotFather) on Telegram and get your **Bot Token**.
     2. Find your **Chat ID** by talking to [@userinfobot](https://t.me/userinfobot).
-    3. Open the `C:\rclone\scripts\notify.py` file in a text editor.
+    3. Open the `C:\rclone\pyclone\notify.py` file in a text editor.
     4. Paste your **Bot Token** and **Chat ID** into the configuration section at the top.
 
 3. **Configure Your Backup Jobs (`config.json`)**
 
-   This is the most important step, where you define exactly what to back up and where it should go. Open the `C:\rclone\scripts\config.json` file in a text editor like **VS Code** or **Notepad**.
+   This is the most important step, where you define exactly what to back up and where it should go. Open the `C:\rclone\pyclone\config.json` file in a text editor like **VS Code** or **Notepad**.
 
    The file is structured as a dictionary of "backup jobs." Each job has a name (like `"Documents"` or `"V-Drive"`) and contains details about its destination, source (if needed), and any files or folders to exclude.
 
@@ -216,7 +214,7 @@ To make the backup run automatically, use **Windows Task Scheduler**.
 
 6. **Configure the Action:**
 
-   * **Program/script**: `"C:\rclone\scripts\run_backup.bat"`
+   * **Program/script**: `"C:\rclone\pyclone\run_pyclone.bat"`
    * **Add arguments (optional)**: (Leave this blank)
    * **Start in (optional)**: (Leave this blank)
 
