@@ -27,25 +27,25 @@ echo.
 echo [2/5] Creating folder structure...
 if not exist "C:\rclone" mkdir "C:\rclone"
 
-:: Check if the scripts folder exists. If so, remove it for a clean install.
-if exist "C:\rclone\scripts" (
-    echo      Existing scripts folder found. Removing for clean installation...
-    rmdir /s /q "C:\rclone\scripts"
+:: Check if the PyClone folder exists. If so, remove it for a clean install.
+if exist "C:\rclone\pyclone" (
+    echo      Existing PyClone folder found. Removing for clean installation...
+    rmdir /s /q "C:\rclone\pyclone"
 )
 
-:: Create the new scripts folder
-mkdir "C:\rclone\scripts"
-echo      Folders created at C:\rclone\scripts
+:: Create the new PyClone folder
+mkdir "C:\rclone\pyclone"
+echo      Folders created at C:\rclone\pyclone
 echo.
 
 :: --- Step 3: Move Project Files ---
 echo [3/5] Moving project files...
 :: %~dp0 is a special variable that gets the directory of this setup.bat file
 set "SOURCE_DIR=%~dp0"
-set "DEST_DIR=C:\rclone\scripts"
+set "DEST_DIR=C:\rclone\pyclone"
 
 :: List of files to move
-set "FILES_TO_MOVE=pyclone.py config.json notify.py utils.py"
+set "FILES_TO_MOVE=pyclone.py config.json notify.py utils.py version"
 
 for %%F in (%FILES_TO_MOVE%) do (
     if exist "%SOURCE_DIR%\%%F" (
@@ -73,7 +73,7 @@ echo.
 echo [5/5] Creating the launcher script (run_backup.bat)...
 (
     echo @"%DEST_DIR%\venv\Scripts\python.exe" "%DEST_DIR%\pyclone.py"
-) > "%DEST_DIR%\run_backup.bat"
+) > "%DEST_DIR%\run_pyclone.bat"
 echo      Launcher created successfully.
 echo.
 
@@ -83,13 +83,13 @@ echo ======================================================
 echo           SETUP COMPLETE!
 echo ======================================================
 echo.
-echo Your backup system is now installed in C:\rclone\scripts
+echo Your backup system is now installed in C:\rclone\pyclone
 echo.
 echo --- NEXT STEPS ---
 echo 1. Edit the config.json file with your folder paths.
 echo 2. Edit the notify.py file with your Telegram Bot Token and Chat ID.
 echo 3. Set up Windows Task Scheduler to run the new
-echo    'run_backup.bat' file located in C:\rclone\scripts
+echo    'run_pyclone.bat' file located in C:\rclone\pyclone
 echo.
 echo This window will close now.
 pause
