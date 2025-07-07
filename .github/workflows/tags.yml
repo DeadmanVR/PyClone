@@ -1,0 +1,60 @@
+name: Deploy tags
+
+on:
+  push:
+    branches:
+      - main 
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write 
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 
+      
+      - name: Read version file
+        id: get-version
+        run: |
+          if [ -f "version" ]; then
+            VERSION=$(cat version | tr -d '\n' | tr -d '\r')
+            echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
+            echo "Found version: $VERSION"
+          else
+            echo "Version file not found. Workflow cannot continue."
+            exit 1
+          fi
+      
+      - name: Configure Git
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "github-actions@github.com"
+      
+      - name: Create or update tag
+        run: |
+          VERSION=${{ steps.get-version.outputs.VERSION }}
+          
+          # Check if tag exists in remote repository
+          if git ls-remote --tags origin | grep -q "refs/tags/$VERSION$"; then
+            echo "Tag $VERSION already exists, updating it..."
+            
+            # Delete the existing tag locally and remotely
+            git tag -d "$VERSION" 2>/dev/null || true
+            git push --delete origin "refs/tags/$VERSION" || echo "Failed to delete remote tag (it may not exist yet)"
+            
+            echo "Creating updated tag $VERSION pointing to current commit..."
+          else
+            echo "Creating new tag $VERSION..."
+          fi
+          
+          # Create annotated tag on current commit
+          git tag -a "$VERSION" -m "Version $VERSION"
+          
+          # Push the tag to remote
+          git push origin "$VERSION"
+          
+          echo "✅ Tag $VERSION successfully created/updated!"
