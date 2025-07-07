@@ -1,7 +1,7 @@
 @echo off
 cls
 echo ======================================================
-echo      Rclone Backup Script Installer
+echo      PyClone v3.1.1 Script Installer
 echo ======================================================
 echo.
 echo This script will set up the necessary folders and
@@ -45,7 +45,7 @@ set "SOURCE_DIR=%~dp0"
 set "DEST_DIR=C:\rclone\scripts"
 
 :: List of files to move
-set "FILES_TO_MOVE=backup.py config.json notify.py utils.py"
+set "FILES_TO_MOVE=pyclone.py config.json notify.py utils.py"
 
 for %%F in (%FILES_TO_MOVE%) do (
     if exist "%SOURCE_DIR%\%%F" (
@@ -72,7 +72,7 @@ echo.
 :: --- Step 5: Create the Launcher Batch File ---
 echo [5/5] Creating the launcher script (run_backup.bat)...
 (
-    echo @"%DEST_DIR%\venv\Scripts\python.exe" "%DEST_DIR%\backup.py"
+    echo @"%DEST_DIR%\venv\Scripts\python.exe" "%DEST_DIR%\pyclone.py"
 ) > "%DEST_DIR%\run_backup.bat"
 echo      Launcher created successfully.
 echo.
